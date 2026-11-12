@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bàn làm việc | Hải Hà Hưng</title>
+<style>
+:root{
+  --blue:#2563eb;--blue2:#1d4ed8;--ink:#172033;--muted:#718096;
+  --bg:#f3f6fb;--line:#e8edf5;--white:#fff;--shadow:0 8px 28px rgba(25,45,85,.07)
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.topbar{height:68px;background:linear-gradient(100deg,#174fc9,#2875ee);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 30px;box-shadow:0 3px 14px #174fc933}
+.brand{display:flex;align-items:center;gap:13px;font-size:20px;font-weight:750;letter-spacing:.2px}
+.brand-mark{width:38px;height:38px;border-radius:12px;background:#fff;color:#2162d8;display:grid;place-items:center;font-weight:900;font-size:19px}
+.top-right{display:flex;align-items:center;gap:18px;font-size:13px;color:#eaf1ff}
+.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#245fd0;font-weight:800}
+.shell{display:grid;grid-template-columns:245px 1fr;min-height:calc(100vh - 68px)}
+.sidebar{background:#fff;border-right:1px solid var(--line);padding:25px 17px}
+.profile{display:flex;align-items:center;gap:12px;padding:9px 8px 25px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.profile-icon{width:42px;height:42px;border-radius:50%;background:#ff743f;color:#fff;display:grid;place-items:center;font-weight:800}
+.profile strong{display:block;font-size:14px}.profile small{color:var(--muted);display:block;margin-top:4px}
+.nav-label{font-size:11px;color:#9aa5b5;font-weight:800;letter-spacing:1px;padding:12px 10px 8px}
+.nav-item{display:flex;align-items:center;gap:12px;padding:12px 11px;border-radius:10px;color:#526078;font-size:14px;margin:3px 0}
+.nav-item.active{background:#edf4ff;color:var(--blue);font-weight:700}
+.nav-icon{width:29px;height:29px;border-radius:9px;background:#eef3fb;display:grid;place-items:center;font-size:15px}
+.main{padding:30px 34px 45px;max-width:1500px;width:100%;margin:auto}
+.welcome{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:27px}
+.eyebrow{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:9px}
+h1{font-size:27px;margin:0 0 8px;letter-spacing:-.6px}
+.subtitle{color:var(--muted);font-size:14px;margin:0}
+.datebox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 15px;color:#66748a;font-size:13px;white-space:nowrap}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:30px 0 15px}
+.section-head h2{font-size:16px;margin:0}.section-head span{font-size:12px;color:#9aa5b5}
+.apps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.app-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:.2s;min-height:205px;display:flex;flex-direction:column}
+.app-card:not(.coming):hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(25,65,140,.13);border-color:#c9d9fb}
+.app-top{display:flex;align-items:flex-start;justify-content:space-between}
+.app-logo{width:53px;height:53px;border-radius:15px;display:grid;place-items:center;color:white;font-size:22px;font-weight:850;box-shadow:0 5px 12px #00000013}
+.logo-al{background:linear-gradient(135deg,#2378ed,#1748bd)}
+.logo-crm{background:linear-gradient(135deg,#12b8a6,#078477)}
+.logo-nv{background:linear-gradient(135deg,#8b5cf6,#5b36c9)}
+.logo-site{background:linear-gradient(135deg,#8a97aa,#5e6b7f)}
+.status{font-size:11px;font-weight:700;padding:6px 9px;border-radius:20px;background:#eaf8f0;color:#18834b}
+.status.soon{background:#fff5e6;color:#b87516}
+.app-card h3{font-size:18px;margin:17px 0 7px}
+.app-card p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;max-width:440px}
+.card-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:19px}
+.app-type{font-size:11px;color:#98a3b4}
+.launch{border:0;border-radius:9px;padding:10px 15px;background:var(--blue);color:#fff;font-weight:700;font-size:12px;cursor:pointer;transition:.15s}
+.launch:hover{background:var(--blue2)}
+.launch:disabled{background:#e9edf3;color:#9aa5b5;cursor:not-allowed}
+.coming{background:linear-gradient(145deg,#fff,#fafbfe)}
+.footer{display:flex;justify-content:space-between;gap:12px;margin-top:35px;padding-top:18px;border-top:1px solid var(--line);color:#9aa5b5;font-size:11px}
+@media(max-width:850px){.shell{grid-template-columns:1fr}.sidebar{display:none}.main{padding:25px 20px}.topbar{padding:0 18px}}
+@media(max-width:560px){.topbar{height:60px}.brand{font-size:16px}.top-right .date-short{display:none}.shell{min-height:calc(100vh - 60px)}.main{padding:23px 15px}.welcome{align-items:flex-start;flex-direction:column}h1{font-size:23px}.datebox{font-size:12px}.apps{grid-template-columns:1fr;gap:13px}.app-card{min-height:195px;padding:19px}.footer{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">HH</div><span>Bàn làm việc</span></div>
+  <div class="top-right"><span class="date-short">HỆ THỐNG QUẢN TRỊ NỘI BỘ</span><div class="avatar">HH</div></div>
+</header>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="profile"><div class="profile-icon">HH</div><div><strong>HẢI HÀ HƯNG</strong><small>Không gian làm việc</small></div></div>
+    <div class="nav-label">TỔNG QUAN</div>
+    <div class="nav-item active"><span class="nav-icon">⌂</span>Bàn làm việc</div>
+    <div class="nav-item"><span class="nav-icon">▦</span>Ứng dụng của tôi</div>
+    <div class="nav-item"><span class="nav-icon">⚙</span>Thiết lập hệ thống</div>
+    <div class="nav-label" style="margin-top:18px">CÁC HỆ THỐNG</div>
+    <div class="nav-item"><span class="nav-icon">▤</span>Quản lý nhôm</div>
+    <div class="nav-item"><span class="nav-icon">♙</span>CRM nhôm</div>
+    <div class="nav-item"><span class="nav-icon">▣</span>NOVADA</div>
+    <div class="nav-item"><span class="nav-icon">◎</span>Website công ty</div>
+  </aside>
+  <main class="main">
+    <div class="welcome">
+      <div><div class="eyebrow">HẢI HÀ HƯNG · WORKSPACE</div><h1>Xin chào, chào mừng trở lại!</h1><p class="subtitle">Truy cập nhanh vào các hệ thống làm việc của công ty.</p></div>
+      <div class="datebox" id="today">📅 Đang tải ngày...</div>
+    </div>
+    <div class="section-head"><h2>Ứng dụng làm việc</h2><span>04 HỆ THỐNG</span></div>
+    <section class="apps">
+      <article class="app-card">
+        <div class="app-top"><div class="app-logo logo-al">AL</div><span class="status">● Sẵn sàng</span></div>
+        <h3>QLTK NHÔM</h3><p>Quản lý kinh doanh nhôm thanh, báo giá, đơn hàng, kho hàng và các nghiệp vụ liên quan.</p>
+        <div class="card-bottom"><span class="app-type">QUẢN LÝ KINH DOANH</span><button class="launch" onclick="openApp('qltk')">Truy cập hệ thống ↗</button></div>
+      </article>
+      <article class="app-card">
+        <div class="app-top"><div class="app-logo logo-crm">CRM</div><span class="status">● Sẵn sàng</span></div>
+        <h3>CRM NHÔM</h3><p>Quản lý thông tin khách hàng, lịch sử chăm sóc, lịch hẹn, phân loại và hiệu quả nhân viên.</p>
+        <div class="card-bottom"><span class="app-type">KHÁCH HÀNG & CSKH</span><button class="launch" onclick="openApp('crm')">Truy cập hệ thống ↗</button></div>
+      </article>
+      <article class="app-card">
+        <div class="app-top"><div class="app-logo logo-nv">N</div><span class="status">● Sẵn sàng</span></div>
+        <h3>NOVADA</h3><p>Hệ thống quản lý xưởng sản xuất, theo dõi đơn hàng, tiến độ gia công, vật tư và vận hành.</p>
+        <div class="card-bottom"><span class="app-type">QUẢN LÝ SẢN XUẤT</span><button class="launch" onclick="openApp('novada')">Truy cập hệ thống ↗</button></div>
+      </article>
+      <article class="app-card coming">
+        <div class="app-top"><div class="app-logo logo-site">HH</div><span class="status soon">◷ Đang phát triển</span></div>
+        <h3>SITE CÔNG TY</h3><p>Cổng thông tin chính thức của Hải Hà Hưng. Khu vực này sẽ được kích hoạt khi website hoàn thiện.</p>
+        <div class="card-bottom"><span class="app-type">WEBSITE DOANH NGHIỆP</span><button class="launch" disabled>Sắp ra mắt</button></div>
+      </article>
+    </section>
+    <div class="footer"><span>© 2026 HẢI HÀ HƯNG · WORKSPACE</span><span>Không gian làm việc tập trung</span></div>
+  </main>
+</div>
+<script>
+/*
+  CẤU HÌNH ĐƯỜNG DẪN:
+  Thay URL mẫu bên dưới bằng địa chỉ triển khai thực tế của từng ứng dụng.
+  Ví dụ: qltk: "https://haihahung.io.vn/qltk/"
+*/
+const APP_URLS = {
+  qltk: "https://qltk-haihahung.store/",     // Dán link QLTK NHÔM tại đây
+  crm: "http://crm-haihahung.io.vn/",      // Dán link CRM NHÔM tại đây
+  novada: ""    // Dán link NOVADA tại đây
+  //https://haihahung.lovable.app (site cty)
+};
+
+function openApp(key){
+  const url = APP_URLS[key];
+  if(!url){
+    alert("Bạn chưa cấu hình đường dẫn cho ứng dụng này. Hãy mở file index.html và nhập URL trong phần APP_URLS ở cuối file.");
+    return;
+  }
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+function updateDate(){
+  const now = new Date();
+  document.getElementById("today").textContent = "📅 " + now.toLocaleDateString("vi-VN", {
+    weekday:"long", day:"2-digit", month:"long", year:"numeric"
+  });
+}
+updateDate();
+</script>
+</body>
+</html>
