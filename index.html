@@ -1,63 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bàn làm việc | Hải Hà Hưng</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bản vẽ sản xuất cửa - Hải Hà Hưng</title>
 <style>
 :root{
-  --blue:#2563eb;--blue2:#1d4ed8;--ink:#172033;--muted:#718096;
-  --bg:#f3f6fb;--line:#e8edf5;--white:#fff;--shadow:0 8px 28px rgba(25,45,85,.07)
-}
+ --ink:#111c2a;--steel:#4d5d6e;--rule:#c3ccd6;--panel:#f2f5f8;--bench:#cdd4dc;
+ --blue:#1b4f9c;--blue-d:#123a74;--bar:#16212f;--pw:210mm;--ph:297mm;--zoom:1;
+ --sans:"Bahnschrift","Segoe UI","Helvetica Neue",Arial,sans-serif;
+ --mono:"Cascadia Mono","Consolas","Menlo",monospace}
+body.landscape{--pw:297mm;--ph:210mm}
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink)}
-.topbar{height:68px;background:linear-gradient(100deg,#174fc9,#2875ee);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 30px;box-shadow:0 3px 14px #174fc933}
-.brand{display:flex;align-items:center;gap:13px;font-size:20px;font-weight:750;letter-spacing:.2px}
-.brand-mark{width:38px;height:38px;border-radius:12px;background:#fff;color:#2162d8;display:grid;place-items:center;font-weight:900;font-size:19px}
-.top-right{display:flex;align-items:center;gap:18px;font-size:13px;color:#eaf1ff}
-.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#245fd0;font-weight:800}
-.shell{display:grid;grid-template-columns:245px 1fr;min-height:calc(100vh - 68px)}
-.sidebar{background:#fff;border-right:1px solid var(--line);padding:25px 17px}
-.profile{display:flex;align-items:center;gap:12px;padding:9px 8px 25px;border-bottom:1px solid var(--line);margin-bottom:18px}
-.profile-icon{width:42px;height:42px;border-radius:50%;background:#ff743f;color:#fff;display:grid;place-items:center;font-weight:800}
-.profile strong{display:block;font-size:14px}.profile small{color:var(--muted);display:block;margin-top:4px}
-.nav-label{font-size:11px;color:#9aa5b5;font-weight:800;letter-spacing:1px;padding:12px 10px 8px}
-.nav-item{display:flex;align-items:center;gap:12px;padding:12px 11px;border-radius:10px;color:#526078;font-size:14px;margin:3px 0}
-.nav-item.active{background:#edf4ff;color:var(--blue);font-weight:700}
-.nav-icon{width:29px;height:29px;border-radius:9px;background:#eef3fb;display:grid;place-items:center;font-size:15px}
-.main{padding:30px 34px 45px;max-width:1500px;width:100%;margin:auto}
-.welcome{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:27px}
-.eyebrow{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:9px}
-h1{font-size:27px;margin:0 0 8px;letter-spacing:-.6px}
-.subtitle{color:var(--muted);font-size:14px;margin:0}
-.datebox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 15px;color:#66748a;font-size:13px;white-space:nowrap}
-.section-head{display:flex;align-items:center;justify-content:space-between;margin:30px 0 15px}
-.section-head h2{font-size:16px;margin:0}.section-head span{font-size:12px;color:#9aa5b5}
-.apps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.app-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:.2s;min-height:205px;display:flex;flex-direction:column}
-.app-card:not(.coming):hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(25,65,140,.13);border-color:#c9d9fb}
-.app-top{display:flex;align-items:flex-start;justify-content:space-between}
-.app-logo{width:53px;height:53px;border-radius:15px;display:grid;place-items:center;color:white;font-size:22px;font-weight:850;box-shadow:0 5px 12px #00000013}
-.logo-al{background:linear-gradient(135deg,#2378ed,#1748bd)}
-.logo-crm{background:linear-gradient(135deg,#12b8a6,#078477)}
-.logo-nv{background:linear-gradient(135deg,#8b5cf6,#5b36c9)}
-.logo-site{background:linear-gradient(135deg,#8a97aa,#5e6b7f)}
-.status{font-size:11px;font-weight:700;padding:6px 9px;border-radius:20px;background:#eaf8f0;color:#18834b}
-.status.soon{background:#fff5e6;color:#b87516}
-.app-card h3{font-size:18px;margin:17px 0 7px}
-.app-card p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;max-width:440px}
-.card-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:19px}
-.app-type{font-size:11px;color:#98a3b4}
-.launch{border:0;border-radius:9px;padding:10px 15px;background:var(--blue);color:#fff;font-weight:700;font-size:12px;cursor:pointer;transition:.15s}
-.launch:hover{background:var(--blue2)}
-.launch:disabled{background:#e9edf3;color:#9aa5b5;cursor:not-allowed}
-.coming{background:linear-gradient(145deg,#fff,#fafbfe)}
-.footer{display:flex;justify-content:space-between;gap:12px;margin-top:35px;padding-top:18px;border-top:1px solid var(--line);color:#9aa5b5;font-size:11px}
-@media(max-width:850px){.shell{grid-template-columns:1fr}.sidebar{display:none}.main{padding:25px 20px}.topbar{padding:0 18px}}
-@media(max-width:560px){.topbar{height:60px}.brand{font-size:16px}.top-right .date-short{display:none}.shell{min-height:calc(100vh - 60px)}.main{padding:23px 15px}.welcome{align-items:flex-start;flex-direction:column}h1{font-size:23px}.datebox{font-size:12px}.apps{grid-template-columns:1fr;gap:13px}.app-card{min-height:195px;padding:19px}.footer{flex-direction:column}}
+html,body{height:100%}
+body{margin:0;font:13px/1.4 var(--sans);color:var(--ink);background:var(--bench);display:flex;flex-direction:column}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid #5aa0ff;outline-offset:1px}
+
+/* ===== thanh công cụ ===== */
+.bar{flex:0 0 auto;height:46px;background:var(--bar);color:#e8eef5;display:flex;align-items:center;gap:16px;padding:0 14px}
+.mark{width:22px;height:22px;border:2px solid #7fb0ff;position:relative}
+.mark::before{content:"";position:absolute;inset:3px 8px 3px 3px;border:1.5px solid #7fb0ff}
+.bar h1{font-size:14px;font-weight:600;margin:0;letter-spacing:.2px}
+.bar .sp{flex:1}
+.bar a{color:#b9c7d8;text-decoration:none;font-size:12px;padding:6px 10px;border:1px solid #33465c;border-radius:2px}
+.bar a:hover{background:#223245}
+.zoom{display:flex;align-items:center;gap:8px;font:12px var(--mono);color:#b9c7d8}
+.zoom input{width:110px;accent-color:#7fb0ff;padding:0}
+.btn{font:600 12px var(--sans);border:0;border-radius:2px;padding:8px 14px;cursor:pointer;width:auto;margin:0}
+.btn.go{background:#3b82f6;color:#fff}.btn.go:hover{background:#2f6fd8}
+
+/* ===== bố cục làm việc ===== */
+.work{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:340px 1fr}
+.controls{background:var(--panel);border-right:1px solid #aab5c2;overflow:auto;padding:0 0 16px}
+.bench{overflow:auto;padding:22px;background-color:var(--bench);
+ background-image:radial-gradient(#b3bcc6 1px,transparent 1px);background-size:20px 20px}
+.sheets{zoom:var(--zoom);width:max-content;margin:0 auto}
+
+/* ===== bảng thông số ===== */
+details{border-bottom:1px solid var(--rule)}
+summary{cursor:pointer;list-style:none;padding:10px 14px;font-weight:600;font-size:12px;color:var(--blue-d);background:#e8edf3;display:flex;justify-content:space-between;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--steel)}
+details[open]>summary::after{content:"–"}
+.grp{padding:4px 14px 12px}
+label{display:block;font-size:11px;color:var(--steel);margin:9px 0 3px}
+input,select,textarea{width:100%;padding:6px 8px;border:1px solid #aeb9c6;border-radius:2px;background:#fff;color:var(--ink);font:12.5px var(--mono)}
+select{font-family:var(--sans)}
+input[readonly]{background:#e6ebf1;color:var(--blue-d);font-weight:700}
+textarea{min-height:120px;resize:vertical;line-height:1.45}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hint{font-size:11px;color:var(--steel);margin-top:6px}
+.controls .btn{display:block;width:calc(100% - 28px);margin:12px 14px 0;padding:9px;background:#dfe6ee;color:var(--ink);border:1px solid #aeb9c6}
+
+/* ===== trang in: khung viền + khung tên ===== */
+.page{width:var(--pw);height:var(--ph);background:#fff;padding:6mm;margin:0 auto 20px;box-shadow:0 2px 0 #0002,0 12px 30px #0003;break-after:page;overflow:hidden}
+.page:last-child{margin-bottom:0;break-after:auto}
+.sheet{height:100%;border:.5mm solid var(--ink);display:flex;flex-direction:column;min-height:0}
+.cell{border-right:.25mm solid var(--ink);padding:1.2mm 2mm;min-width:0}
+.cell:last-child{border-right:0}
+.cell small{display:block;font-size:5.5pt;color:var(--steel);margin-bottom:.4mm;font-weight:600}
+.cell b,.cell span.v{font-size:8.5pt;font-weight:700}
+.top{display:grid;grid-template-columns:1fr auto;border-bottom:.5mm solid var(--ink);flex:0 0 auto}
+.top .co b{font-size:11pt;letter-spacing:.2px;display:block}
+.top .co span{font-size:7pt;color:var(--steel)}
+.top .cd{display:flex;flex-direction:column;justify-content:center}
+.top .cd b{font:700 9pt var(--mono);color:var(--blue-d)}
+.ttl{padding:2.2mm 3mm;border-bottom:.25mm solid var(--ink);font-size:10.5pt;font-weight:700;letter-spacing:.3px;flex:0 0 auto}
+.body{flex:1 1 0;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 56mm}
+.draw{min-width:0;min-height:0;border-right:.25mm solid var(--ink);padding:2mm}
+.draw svg{width:100%;height:100%;display:block}
+table.spec{border-collapse:collapse;width:100%;align-self:start;font-size:7.5pt}
+.spec th{background:var(--ink);color:#fff;text-align:left;font-size:6.5pt;font-weight:600;padding:1.1mm 2mm;letter-spacing:.3px}
+.spec td{border-bottom:.2mm solid var(--rule);padding:1.1mm 2mm;vertical-align:top}
+.spec td:first-child{color:var(--steel);width:42%}
+.spec td+td{font-weight:700;font-variant-numeric:tabular-nums}
+.notes{display:grid;grid-template-columns:20mm 1fr;border-top:.25mm solid var(--ink);flex:0 0 auto}
+.notes .lb{background:#e8edf3;font-size:6.5pt;font-weight:700;padding:1.5mm 2mm;border-right:.25mm solid var(--ink)}
+.notes #vNotes{padding:1.5mm 2.5mm;font-size:7.5pt;line-height:1.3;white-space:pre-wrap;overflow-wrap:anywhere;color:#c40000;font-weight:700}
+.block{display:grid;grid-template-columns:2fr 1.7fr .9fr .9fr .5fr;border-top:.5mm solid var(--ink);flex:0 0 auto}
+.p2top{padding:2mm 3mm;border-bottom:.5mm solid var(--ink);flex:0 0 auto}
+.p2top b{font-size:11pt}.p2top div{font-size:7.5pt;color:var(--steel);margin-top:.8mm}
+.p2ttl{padding:1.8mm 3mm;border-bottom:.25mm solid var(--ink);font-size:9pt;font-weight:700;flex:0 0 auto}
+.frame{flex:1 1 0;min-height:0;display:flex;align-items:center;justify-content:center;padding:2mm;overflow:hidden}
+.frame img{width:100%;height:100%;object-fit:contain;display:block}
+.frame.missing img{display:none}
+.frame.missing::after{content:"Chưa có ảnh mặt cắt cho lựa chọn này";font:10pt var(--mono);color:var(--steel)}
+.block.two{grid-template-columns:1fr auto}
+
+.qi{display:flex;gap:4px;margin-top:5px}.qi button{margin:0;font:12px var(--mono);padding:6px 8px;border:1px solid #aeb9c6;background:#fff;cursor:pointer;border-radius:2px;text-align:left}.qi button:first-child{flex:1}
+.p3b{flex:1 1 0;min-height:0;padding:3mm;overflow:hidden}.qt{width:100%;border-collapse:collapse;font-size:8pt}.qt th{background:var(--ink);color:#fff;padding:1.5mm 2mm;text-align:left;font-size:7pt}.qt td{border-bottom:.2mm solid var(--rule);padding:1.6mm 2mm;vertical-align:top}.qt .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.qt .tt td{font-weight:700;border-bottom:0}.qt .big td{font-size:10pt;color:var(--blue-d)}
+.draw svg{touch-action:none}
+.q{width:100%;border-collapse:collapse;margin-top:10px;font:12px var(--mono)}.q td{padding:4px 0;border-bottom:1px solid var(--rule)}.q td+td{text-align:right;font-weight:700}.q tr:last-child td{color:var(--blue-d);font-size:14px}
+@media(max-width:1000px){.work{grid-template-columns:1fr;overflow:auto}.controls{border-right:0;overflow:visible}.bench{overflow:visible}.bar .zoom{display:none}}
+@media print{
+ html,body{height:auto}body{display:block;background:#fff}
+ .bar,.controls{display:none!important}
+ .work{display:block}.bench{padding:0;background:none;overflow:visible}
+ .grip{display:none}.sheets{zoom:1;width:auto}.page{margin:0;box-shadow:none}
+}
+
+/* ===== Bàn làm việc (màn hình chính) — CSS gói gọn trong #viewHome để không đụng bản vẽ ===== */
+#viewQuote{flex:1 1 auto;min-height:0;display:flex;flex-direction:column}
+body.home #viewQuote{display:none}
+body:not(.home) #viewHome{display:none}
+#viewHome{--blue:#2563eb;--blue2:#1d4ed8;--ink:#172033;--muted:#718096;--bg:#f3f6fb;--line:#e8edf5;--shadow:0 8px 28px rgba(25,45,85,.07);
+ flex:1 1 auto;min-height:0;overflow:auto;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font:16px/normal Inter,"Segoe UI",Arial,sans-serif}
+#viewHome .topbar{flex:0 0 auto;height:68px;background:linear-gradient(100deg,#174fc9,#2875ee);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 30px;box-shadow:0 3px 14px #174fc933}
+#viewHome .brand{display:flex;align-items:center;gap:13px;font-size:20px;font-weight:750;letter-spacing:.2px}
+#viewHome .brand-mark{width:38px;height:38px;border-radius:12px;background:#fff;color:#2162d8;display:grid;place-items:center;font-weight:900;font-size:19px}
+#viewHome .top-right{display:flex;align-items:center;gap:18px;font-size:13px;color:#eaf1ff}
+#viewHome .avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#fff;color:#245fd0;font-weight:800}
+#viewHome .shell{flex:1 1 auto;display:grid;grid-template-columns:245px 1fr}
+#viewHome .sidebar{background:#fff;border-right:1px solid var(--line);padding:25px 17px}
+#viewHome .profile{display:flex;align-items:center;gap:12px;padding:9px 8px 25px;border-bottom:1px solid var(--line);margin-bottom:18px}
+#viewHome .profile-icon{width:42px;height:42px;border-radius:50%;background:#ff743f;color:#fff;display:grid;place-items:center;font-weight:800}
+#viewHome .profile strong{display:block;font-size:14px}#viewHome .profile small{color:var(--muted);display:block;margin-top:4px}
+#viewHome .nav-label{font-size:11px;color:#9aa5b5;font-weight:800;letter-spacing:1px;padding:12px 10px 8px}
+#viewHome .nav-item{display:flex;align-items:center;gap:12px;padding:12px 11px;border-radius:10px;color:#526078;font-size:14px;margin:3px 0}
+#viewHome .nav-item.active{background:#edf4ff;color:var(--blue);font-weight:700}
+#viewHome .nav-icon{width:29px;height:29px;border-radius:9px;background:#eef3fb;display:grid;place-items:center;font-size:15px}
+/* mục có nhánh con: Trượt quay */
+#viewHome button.nav-item,#viewHome button.sub-item{width:100%;border:0;background:none;font-family:inherit;text-align:left;cursor:pointer}
+#viewHome button.nav-item:hover,#viewHome button.sub-item:hover{background:#edf4ff;color:var(--blue)}
+#viewHome .caret{margin-left:auto;font-size:11px;transition:transform .15s}
+#viewHome .has-sub[aria-expanded=false] .caret{transform:rotate(-90deg)}
+#viewHome .sub{margin:0 0 6px 26px;padding-left:12px;border-left:2px solid var(--line)}
+#viewHome .sub-item{display:block;font-size:13px;color:#526078;padding:9px 10px;border-radius:8px;margin:2px 0}
+#viewHome .main{padding:30px 34px 45px;max-width:1500px;width:100%;margin:auto}
+#viewHome .welcome{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:27px}
+#viewHome .eyebrow{font-size:12px;color:var(--blue);font-weight:800;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:9px}
+#viewHome h1{font-size:27px;margin:0 0 8px;letter-spacing:-.6px}
+#viewHome .subtitle{color:var(--muted);font-size:14px;margin:0}
+#viewHome .datebox{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 15px;color:#66748a;font-size:13px;white-space:nowrap}
+#viewHome .section-head{display:flex;align-items:center;justify-content:space-between;margin:30px 0 15px}
+#viewHome .section-head h2{font-size:16px;margin:0}#viewHome .section-head span{font-size:12px;color:#9aa5b5}
+#viewHome .apps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+#viewHome .app-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:.2s;min-height:205px;display:flex;flex-direction:column}
+#viewHome .app-card:not(.coming):hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(25,65,140,.13);border-color:#c9d9fb}
+#viewHome .app-top{display:flex;align-items:flex-start;justify-content:space-between}
+#viewHome .app-logo{width:53px;height:53px;border-radius:15px;display:grid;place-items:center;color:#fff;font-size:22px;font-weight:850;box-shadow:0 5px 12px #00000013}
+#viewHome .logo-al{background:linear-gradient(135deg,#2378ed,#1748bd)}
+#viewHome .logo-crm{background:linear-gradient(135deg,#12b8a6,#078477)}
+#viewHome .logo-nv{background:linear-gradient(135deg,#8b5cf6,#5b36c9)}
+#viewHome .logo-site{background:linear-gradient(135deg,#8a97aa,#5e6b7f)}
+#viewHome .status{font-size:11px;font-weight:700;padding:6px 9px;border-radius:20px;background:#eaf8f0;color:#18834b}
+#viewHome .status.soon{background:#fff5e6;color:#b87516}
+#viewHome .app-card h3{font-size:18px;margin:17px 0 7px}
+#viewHome .app-card p{font-size:13px;color:var(--muted);line-height:1.55;margin:0;max-width:440px}
+#viewHome .card-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:19px}
+#viewHome .app-type{font-size:11px;color:#98a3b4}
+#viewHome .launch{border:0;border-radius:9px;padding:10px 15px;background:var(--blue);color:#fff;font:700 12px Inter,"Segoe UI",Arial,sans-serif;cursor:pointer;transition:.15s;width:auto;margin:0}
+#viewHome .launch:hover{background:var(--blue2)}
+#viewHome .launch:disabled{background:#e9edf3;color:#9aa5b5;cursor:not-allowed}
+#viewHome .coming{background:linear-gradient(145deg,#fff,#fafbfe)}
+#viewHome .footer{display:flex;justify-content:space-between;gap:12px;margin-top:35px;padding-top:18px;border-top:1px solid var(--line);color:#9aa5b5;font-size:11px}
+@media(max-width:850px){
+ #viewHome .shell{grid-template-columns:1fr;flex:0 0 auto}
+ /* điện thoại: giữ lại nhóm CÁC HỆ THỐNG để còn vào được Trượt quay */
+ #viewHome .sidebar{border-right:0;border-bottom:1px solid var(--line);padding:8px 15px}
+ #viewHome .profile,#viewHome .ov,#viewHome .static{display:none}
+ #viewHome .main{padding:25px 20px}#viewHome .topbar{padding:0 18px}}
+@media(max-width:560px){
+ #viewHome .topbar{height:60px}#viewHome .brand{font-size:16px}#viewHome .top-right .date-short{display:none}
+ #viewHome .main{padding:23px 15px}#viewHome .welcome{align-items:flex-start;flex-direction:column}#viewHome h1{font-size:23px}
+ #viewHome .datebox{font-size:12px}#viewHome .apps{grid-template-columns:1fr;gap:13px}#viewHome .app-card{min-height:195px;padding:19px}#viewHome .footer{flex-direction:column}}
+@media print{#viewHome{display:none!important}#viewQuote{display:block!important}}
+#homeBtn{background:#223245;color:#fff;border:1px solid #33465c}#homeBtn:hover{background:#2d4259}
 </style>
 </head>
-<body>
+<body class="home">
+<!-- ================= BÀN LÀM VIỆC (màn hình chính) ================= -->
+<div id="viewHome">
 <header class="topbar">
   <div class="brand"><div class="brand-mark">HH</div><span>Bàn làm việc</span></div>
   <div class="top-right"><span class="date-short">HỆ THỐNG QUẢN TRỊ NỘI BỘ</span><div class="avatar">HH</div></div>
@@ -65,15 +179,22 @@ h1{font-size:27px;margin:0 0 8px;letter-spacing:-.6px}
 <div class="shell">
   <aside class="sidebar">
     <div class="profile"><div class="profile-icon">HH</div><div><strong>HẢI HÀ HƯNG</strong><small>Không gian làm việc</small></div></div>
-    <div class="nav-label">TỔNG QUAN</div>
-    <div class="nav-item active"><span class="nav-icon">⌂</span>Bàn làm việc</div>
-    <div class="nav-item"><span class="nav-icon">▦</span>Ứng dụng của tôi</div>
-    <div class="nav-item"><span class="nav-icon">⚙</span>Thiết lập hệ thống</div>
+    <div class="ov">
+      <div class="nav-label">TỔNG QUAN</div>
+      <div class="nav-item active"><span class="nav-icon">⌂</span>Bàn làm việc</div>
+      <div class="nav-item"><span class="nav-icon">▦</span>Ứng dụng của tôi</div>
+      <div class="nav-item"><span class="nav-icon">⚙</span>Thiết lập hệ thống</div>
+    </div>
     <div class="nav-label" style="margin-top:18px">CÁC HỆ THỐNG</div>
-    <div class="nav-item"><span class="nav-icon">▤</span>Quản lý nhôm</div>
-    <div class="nav-item"><span class="nav-icon">♙</span>CRM nhôm</div>
-    <div class="nav-item"><span class="nav-icon">▣</span>NOVADA</div>
-    <div class="nav-item"><span class="nav-icon">◎</span>Website công ty</div>
+    <div class="nav-item static"><span class="nav-icon">▤</span>Quản lý nhôm</div>
+    <div class="nav-item static"><span class="nav-icon">♙</span>CRM nhôm</div>
+    <div class="nav-item static"><span class="nav-icon">▣</span>NOVADA</div>
+    <div class="nav-item static"><span class="nav-icon">◎</span>Website công ty</div>
+    <button type="button" class="nav-item has-sub" id="tqToggle" aria-expanded="true" aria-controls="tqSub"><span class="nav-icon">⇄</span>Trượt quay<span class="caret" aria-hidden="true">▾</span></button>
+    <div class="sub" id="tqSub">
+      <button type="button" class="sub-item" data-system="sliding-turn-4">Trượt quay</button>
+      <button type="button" class="sub-item" data-system="slim-oneway-4">Trượt quay slim 1 chiều</button>
+    </div>
   </aside>
   <main class="main">
     <div class="welcome">
@@ -85,17 +206,17 @@ h1{font-size:27px;margin:0 0 8px;letter-spacing:-.6px}
       <article class="app-card">
         <div class="app-top"><div class="app-logo logo-al">AL</div><span class="status">● Sẵn sàng</span></div>
         <h3>QLTK NHÔM</h3><p>Quản lý kinh doanh nhôm thanh, báo giá, đơn hàng, kho hàng và các nghiệp vụ liên quan.</p>
-        <div class="card-bottom"><span class="app-type">QUẢN LÝ KINH DOANH</span><button class="launch" onclick="openApp('qltk')">Truy cập hệ thống ↗</button></div>
+        <div class="card-bottom"><span class="app-type">QUẢN LÝ KINH DOANH</span><button class="launch" data-app="qltk">Truy cập hệ thống ↗</button></div>
       </article>
       <article class="app-card">
         <div class="app-top"><div class="app-logo logo-crm">CRM</div><span class="status">● Sẵn sàng</span></div>
         <h3>CRM NHÔM</h3><p>Quản lý thông tin khách hàng, lịch sử chăm sóc, lịch hẹn, phân loại và hiệu quả nhân viên.</p>
-        <div class="card-bottom"><span class="app-type">KHÁCH HÀNG & CSKH</span><button class="launch" onclick="openApp('crm')">Truy cập hệ thống ↗</button></div>
+        <div class="card-bottom"><span class="app-type">KHÁCH HÀNG &amp; CSKH</span><button class="launch" data-app="crm">Truy cập hệ thống ↗</button></div>
       </article>
       <article class="app-card">
         <div class="app-top"><div class="app-logo logo-nv">N</div><span class="status">● Sẵn sàng</span></div>
         <h3>NOVADA</h3><p>Hệ thống quản lý xưởng sản xuất, theo dõi đơn hàng, tiến độ gia công, vật tư và vận hành.</p>
-        <div class="card-bottom"><span class="app-type">QUẢN LÝ SẢN XUẤT</span><button class="launch" onclick="openApp('novada')">Truy cập hệ thống ↗</button></div>
+        <div class="card-bottom"><span class="app-type">QUẢN LÝ SẢN XUẤT</span><button class="launch" data-app="novada">Truy cập hệ thống ↗</button></div>
       </article>
       <article class="app-card coming">
         <div class="app-top"><div class="app-logo logo-site">HH</div><span class="status soon">◷ Đang phát triển</span></div>
@@ -106,34 +227,158 @@ h1{font-size:27px;margin:0 0 8px;letter-spacing:-.6px}
     <div class="footer"><span>© 2026 HẢI HÀ HƯNG · WORKSPACE</span><span>Không gian làm việc tập trung</span></div>
   </main>
 </div>
-<script>
-/*
-  CẤU HÌNH ĐƯỜNG DẪN:
-  Thay URL mẫu bên dưới bằng địa chỉ triển khai thực tế của từng ứng dụng.
-  Ví dụ: qltk: "https://haihahung.io.vn/qltk/"
-*/
-const APP_URLS = {
-  qltk: "https://qltk-haihahung.store/",     // Dán link QLTK NHÔM tại đây
-  crm: "http://crm-haihahung.io.vn/",      // Dán link CRM NHÔM tại đây
-  novada: "http://novada.io.vn/"    // Dán link NOVADA tại đây
-  //https://haihahung.lovable.app (site cty)
-};
+</div>
 
-function openApp(key){
-  const url = APP_URLS[key];
-  if(!url){
-    alert("Bạn chưa cấu hình đường dẫn cho ứng dụng này. Hãy mở file index.html và nhập URL trong phần APP_URLS ở cuối file.");
-    return;
-  }
-  window.open(url, "_blank", "noopener,noreferrer");
-}
-function updateDate(){
-  const now = new Date();
-  document.getElementById("today").textContent = "📅 " + now.toLocaleDateString("vi-VN", {
-    weekday:"long", day:"2-digit", month:"long", year:"numeric"
-  });
-}
-updateDate();
+<!-- ================= BẢN VẼ / BÁO GIÁ CỬA ================= -->
+<div id="viewQuote">
+<header class="bar">
+  <div class="mark" aria-hidden="true"></div>
+  <h1>Bản vẽ sản xuất cửa nhôm kính</h1>
+  <div class="sp"></div>
+  <label class="zoom" for="open" style="margin:0">Độ mở <input id="open" type="range" min="0" max="100" value="0"><button class="btn" id="playBtn" title="Chạy mô phỏng mở/đóng cửa" style="background:#223245;color:#fff;padding:6px 10px">▶</button></label>
+  <label class="zoom" for="zoom" style="margin:0">Thu phóng <input id="zoom" type="range" min="50" max="130" value="85"><span id="zoomV">85%</span></label>
+  <button class="btn" id="homeBtn" title="Về Bàn làm việc">⌂ Bàn làm việc</button>
+  <a href="https://haihahung.io.vn/sites/bao-gia/index.html">Trang chủ</a>
+  <button class="btn go" id="printBtn">In / Xuất PDF</button>
+</header>
+
+<div class="work">
+<aside class="controls">
+  <details open><summary>Kiểu cửa</summary><div class="grp">
+    <label for="system">Hệ / kiểu cửa</label>
+    <select id="system">
+      <option value="sliding-turn-4">Cửa đi trượt quay 4 cánh</option>
+      <option value="sliding-turn-4-fix">Cửa trượt quay 4 cánh + ô fix</option>
+      <option value="sliding-turn-2-fix">Cửa trượt quay 2 cánh + ô fix</option>
+      <option value="sliding-2">Cửa trượt quay 2 cánh</option>
+      <option value="sliding-3">Cửa lùa 3 cánh</option>
+      <option value="slim-oneway-2">Trượt quay slim 1 chiều 2 cánh</option>
+      <option value="slim-oneway-4">Trượt quay slim 1 chiều 4 cánh</option>
+      <option value="swing-2">Cửa mở quay 2 cánh</option>
+      <option value="swing-1">Cửa mở quay 1 cánh</option>
+    </select>
+    <div id="openSideWrap" hidden><label for="openSide">Chiều mở cánh</label>
+      <select id="openSide"><option value="left">Mở qua trái</option><option value="right">Mở qua phải</option></select></div>
+    <label for="openingDirection">Hướng mở (trang 2)</label>
+    <select id="openingDirection"><option value="outside">Mở ngoài</option><option value="inside">Mở trong</option></select>
+    <label for="layout">Khổ giấy</label>
+    <select id="layout"><option value="portrait">A4 đứng</option><option value="landscape">A4 ngang</option></select>
+    <div class="hint" id="imgHint"></div>
+    <div class="hint">Mẹo: kéo chấm xanh ở cạnh phải / cạnh dưới bản vẽ để đổi kích thước.</div>
+  </div></details>
+
+  <details open><summary>Kích thước</summary><div class="grp">
+    <div class="row"><div><label for="width">Ngang W (mm)</label><input id="width" type="number" min="100" value="2800"></div>
+    <div><label for="height">Cao H (mm)</label><input id="height" type="number" min="100" value="2400"></div></div>
+    <label for="codeInput">Mã bản vẽ (tự sinh)</label><input id="codeInput" readonly>
+  </div></details>
+
+  <details open><summary>Vật liệu</summary><div class="grp">
+    <div class="row"><div><label for="brand">Thương hiệu</label><input id="brand" value="Kögen"></div>
+    <div><label for="profile">Hệ nhôm</label><input id="profile" value="Hệ TQ-86"></div></div>
+    <div class="row"><div><label for="leaf">Bản cánh</label><input id="leaf" value="35 x 86 mm"></div>
+    <div><label for="color">Màu nhôm</label><input id="color" value="Ghi Xám"></div></div>
+    <div class="row"><div><label for="lock">Màu khóa</label><input id="lock" value="Đen xám"></div>
+    <div><label for="glass">Loại kính</label><input id="glass" value="Cường lực 10mm"></div></div>
+    <label for="hardware">Thương hiệu phụ kiện</label><input id="hardware" value="Jingcheng">
+  </div></details>
+
+  <details open><summary>Báo giá nhanh</summary><div class="grp">
+    <div class="row" style="grid-template-columns:1.5fr 1fr 1fr"><div><label for="price">Đơn giá (đ/m²)</label><input id="price" type="number" min="0" step="1000" placeholder="nhập giá"></div>
+    <div><label for="vat">VAT (%)</label><input id="vat" type="number" min="0" max="100" value="0"></div>
+    <div><label for="qty">Số lượng</label><input id="qty" type="number" min="1" value="1"></div></div>
+    <table class="q"><tr><td>Diện tích</td><td id="qArea"></td></tr><tr><td>Thành tiền</td><td id="qSub"></td></tr><tr><td>VAT</td><td id="qVat"></td></tr><tr><td>Tổng cộng</td><td id="qTotal"></td></tr></table>
+    <button class="btn" id="addBtn" style="margin:10px 0 0;width:100%;background:var(--blue);color:#fff;border:0">+ Thêm cửa này vào bảng báo giá</button>
+    <div id="qList"></div>
+  </div></details>
+
+  <details><summary>Đơn vị và ghi chú</summary><div class="grp">
+    <label for="company">Tên công ty</label><input id="company" value="CÔNG TY TNHH HẢI HÀ HƯNG">
+    <label for="address">Địa chỉ / hotline</label><input id="address" value="Quảng Nam - Đà Nẵng | Hotline: ................................">
+    <label for="maker">Nhà sản xuất</label><input id="maker" value="HẢI HÀ HƯNG">
+    <label for="notes">Ghi chú sản xuất lắp đặt</label>
+    <textarea id="notes">- Cửa sản xuất theo kích thước thực tế đã xác nhận.
+- Kiểm tra kích thước ô chờ và hướng mở trước khi sản xuất.
+- Màu sắc, kính và phụ kiện theo cấu hình báo giá đã thống nhất.
+- Cửa trượt quay 1 chiều bản cánh 35*86
+- Sản xuất 4 cánh bằng nhau
+- Đứng ngoài mở ngoài khoá bên phải
+- PK Jingcheng: khoá màu đen + bánh xe 4 con lăn và 4 bản lề/cánh
+- Tay nắm: 1 cặp - bắt mặt trong</textarea>
+    <div class="row"><div><label for="date">Ngày lập</label><input id="date" type="date" value="2026-11-05"></div>
+    <div><label for="approver">Người duyệt</label><input id="approver" value="Bộ phận kỹ thuật"></div></div>
+  </div></details>
+
+  <button class="btn" id="pngBtn">Tải ảnh PNG (gửi Zalo)</button>
+  <button class="btn" id="svgBtn">Tải bản vẽ SVG</button>
+  <button class="btn" id="linkBtn">Sao chép liên kết cấu hình</button>
+  <button class="btn" id="resetBtn">Khôi phục mẫu 2800 × 2400</button>
+  <div class="hint" style="padding:0 14px">Khi in: chọn “Lưu dưới dạng PDF”, khổ A4, tắt Header/Footer, lề “Không”.</div>
+</aside>
+
+<main class="bench"><div class="sheets">
+<section class="page"><div class="sheet">
+  <header class="top">
+    <div class="cell co"><b id="vCompany"></b><span id="vAddress"></span></div>
+    <div class="cell cd"><small>MÃ BẢN VẼ</small><b id="vCode"></b></div>
+  </header>
+  <div class="ttl" id="vTitle"></div>
+  <div class="body">
+    <div class="draw"><svg id="doorSvg" role="img" aria-label="Mặt đứng cửa kèm kích thước ngang và cao"></svg></div>
+    <table class="spec">
+      <tr><th colspan="2">KÍCH THƯỚC</th></tr>
+      <tr><td>Rộng (W)</td><td id="vWidth"></td></tr>
+      <tr><td>Cao (H)</td><td id="vHeight"></td></tr>
+      <tr><td>Mã hiệu</td><td id="vType"></td></tr>
+      <tr><th colspan="2">NHÔM</th></tr>
+      <tr><td>Thương hiệu</td><td id="vBrand"></td></tr>
+      <tr><td>Hệ nhôm</td><td id="vProfile"></td></tr>
+      <tr><td>Bản cánh</td><td id="vLeaf"></td></tr>
+      <tr><td>Màu nhôm</td><td id="vColor"></td></tr>
+      <tr><th colspan="2">KÍNH VÀ PHỤ KIỆN</th></tr>
+      <tr><td>Loại kính</td><td id="vGlass"></td></tr>
+      <tr><td>Màu khóa</td><td id="vLock"></td></tr>
+      <tr><td>Phụ kiện</td><td id="vHardware"></td></tr>
+      <tr><th colspan="2">ĐƠN VỊ CUNG CẤP</th></tr>
+      <tr><td>Sản xuất</td><td id="vMaker"></td></tr>
+    </table>
+  </div>
+  <section class="notes"><div class="lb">GHI CHÚ SẢN XUẤT LẮP ĐẶT</div><div id="vNotes"></div></section>
+  <footer class="block">
+    <div class="cell"><small>ĐƠN VỊ LẬP</small><b id="vFooterCompany"></b><br><span class="v" style="font-weight:400;font-size:6.5pt" id="vFooterAddress"></span></div>
+    <div class="cell"><small>CÔNG TRÌNH</small><span class="v" id="vProject"></span></div>
+    <div class="cell"><small>NGÀY LẬP</small><b id="vDate"></b></div>
+    <div class="cell"><small>DUYỆT</small><b id="vApprover"></b></div>
+    <div class="cell"><small>TỜ</small><b>1/2</b></div>
+  </footer>
+</div></section>
+
+<section class="page"><div class="sheet">
+  <header class="p2top"><b id="p2Company"></b>
+    <div><span id="p2Profile"></span> <span id="p2Brand"></span> | Kích thước: <b id="p2Dimensions"></b></div></header>
+  <div class="p2ttl" id="p2Title"></div>
+  <div class="frame" id="p2Frame"><img id="p2Img" alt="Bản vẽ mặt đứng và mặt cắt kỹ thuật"></div>
+  <footer class="block two">
+    <div class="cell"><small>HỒ SƠ</small><span class="v">Bản vẽ sản xuất nhôm kính - Hải Hà Hưng</span></div>
+    <div class="cell"><small>TỜ</small><b>2/2</b></div>
+  </footer>
+</div></section>
+
+<section class="page" id="p3" hidden><div class="sheet">
+  <header class="top"><div class="cell co"><b id="p3Co"></b><span>BẢNG BÁO GIÁ TỔNG HỢP</span></div><div class="cell cd"><small>NGÀY LẬP</small><b id="p3Date"></b></div></header>
+  <div class="p3b" id="p3Body"></div>
+  <footer class="block two"><div class="cell"><small>GHI CHÚ</small><span class="v">Báo giá theo cấu hình đã chọn; kích thước tính theo W × H thực tế.</span></div><div class="cell"><small>TỜ</small><b>3</b></div></footer>
+</div></section>
+</div></main>
+</div>
+</div>
+<script>
+(()=>{const z=document.getElementById('zoom'),v=document.getElementById('zoomV');
+ const set=()=>{document.documentElement.style.setProperty('--zoom',z.value/100);v.textContent=z.value+'%';};
+ z.addEventListener('input',set);set();})();
 </script>
+<script src="door-drawing.js"></script>
+<script src="workspace.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
