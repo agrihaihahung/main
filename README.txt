@@ -15,6 +15,8 @@ Chưa có ảnh cho cửa 1 và 3 cánh nên trang 2 hiện thông báo thay vì
 
 BÀN LÀM VIỆC: mở index.html sẽ vào Bàn làm việc. Cột "CÁC HỆ THỐNG" có mục "Trượt quay" (bấm để xổ/thu) với 2 mục con:
   - Trượt quay            → mở bản vẽ cửa trượt quay 4 cánh
-  - Trượt quay slim 1 chiều → mở bản vẽ slim 1 chiều 4 cánh
+  - BÁO GIÁ SHEET         → mở Google Sheet báo giá (kiểu slim 1 chiều vẫn chọn được trong ô "Hệ / kiểu cửa")
 Trong màn hình bản vẽ có nút "⌂ Bàn làm việc" để quay lại. Liên kết cấu hình (có #...) mở thẳng bản vẽ.
 Đường dẫn QLTK / CRM / NOVADA sửa trong APP_URLS ở workspace.js.
+
+BÁO GIÁ SHEET: mục con thứ 2 dưới "Trượt quay" (Bàn làm việc) + nút trên thanh bản vẽ; mở Google Sheet báo giá ở tab mới.

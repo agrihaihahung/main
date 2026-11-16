@@ -166,6 +166,8 @@ body:not(.home) #viewHome{display:none}
  #viewHome .main{padding:23px 15px}#viewHome .welcome{align-items:flex-start;flex-direction:column}#viewHome h1{font-size:23px}
  #viewHome .datebox{font-size:12px}#viewHome .apps{grid-template-columns:1fr;gap:13px}#viewHome .app-card{min-height:195px;padding:19px}#viewHome .footer{flex-direction:column}}
 @media print{#viewHome{display:none!important}#viewQuote{display:block!important}}
+#viewHome a.sub-item{text-decoration:none}#viewHome a.sub-item:hover{background:#edf4ff;color:var(--blue)}
+.bar a.sheetLink{background:#16a34a;border-color:#16a34a;color:#fff;font-weight:600;padding:7px 12px}.bar a.sheetLink:hover{background:#15803d}
 #homeBtn{background:#223245;color:#fff;border:1px solid #33465c}#homeBtn:hover{background:#2d4259}
 </style>
 </head>
@@ -193,7 +195,7 @@ body:not(.home) #viewHome{display:none}
     <button type="button" class="nav-item has-sub" id="tqToggle" aria-expanded="true" aria-controls="tqSub"><span class="nav-icon">⇄</span>Trượt quay<span class="caret" aria-hidden="true">▾</span></button>
     <div class="sub" id="tqSub">
       <button type="button" class="sub-item" data-system="sliding-turn-4">Trượt quay</button>
-      <button type="button" class="sub-item" data-system="slim-oneway-4">Trượt quay slim 1 chiều</button>
+      <a class="sub-item" href="https://docs.google.com/spreadsheets/d/1Zoi-kBBHrwhW03pMQfpLFvBfHIU9p1Q1rCN7FngONoM/edit?usp=drive_link" target="_blank" rel="noopener noreferrer">BÁO GIÁ SHEET ↗</a>
     </div>
   </aside>
   <main class="main">
@@ -238,6 +240,7 @@ body:not(.home) #viewHome{display:none}
   <label class="zoom" for="open" style="margin:0">Độ mở <input id="open" type="range" min="0" max="100" value="0"><button class="btn" id="playBtn" title="Chạy mô phỏng mở/đóng cửa" style="background:#223245;color:#fff;padding:6px 10px">▶</button></label>
   <label class="zoom" for="zoom" style="margin:0">Thu phóng <input id="zoom" type="range" min="50" max="130" value="85"><span id="zoomV">85%</span></label>
   <button class="btn" id="homeBtn" title="Về Bàn làm việc">⌂ Bàn làm việc</button>
+  <a class="sheetLink" href="https://docs.google.com/spreadsheets/d/1Zoi-kBBHrwhW03pMQfpLFvBfHIU9p1Q1rCN7FngONoM/edit?usp=drive_link" target="_blank" rel="noopener noreferrer" title="Mở Google Sheet báo giá">BÁO GIÁ SHEET ↗</a>
   <button class="btn go" id="printBtn">In / Xuất PDF</button>
 </header>
 
